@@ -1,0 +1,188 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#143d55), to(#333536));
+  background: linear-gradient(180deg, #143d55, #333536);
+  background-size: 100% 100%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+* {
+  font-family: 'Oswald', sans-serif;
+}
+
+.wrapper .header__title {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.wrapper .header__form {
+  text-align: center;
+  height: 35px;
+}
+
+.wrapper .header__search {
+  height: 40px;
+  width: 330px;
+  font-size: 22px;
+  opacity: 0.9;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  padding-left: 8px;
+  padding-bottom: 5px;
+  background-color: black;
+  color: white;
+}
+
+.wrapper .header__submit {
+  width: 60px;
+  height: 41px;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  background-color: #cc0044;
+  outline: none;
+}
+
+.wrapper .header__submit:hover {
+  background-color: #fd0d35;
+}
+
+.wrapper .header__variable-box [type="radio"] {
+  display: none;
+}
+
+.wrapper .header__variable-box label {
+  width: 70px;
+  height: 40px;
+  background-color: red;
+  text-transform: uppercase;
+  border-color: #cc0044;
+  background-color: #cc0044;
+  outline: none;
+  padding-top: 7px;
+  -webkit-transition: width 0.5s ease-in;
+  transition: width 0.5s ease-in;
+}
+
+.wrapper .header__variable-box label:hover {
+  background-color: #fd0d35;
+}
+
+.wrapper .header__variable-box input[type="radio"]:checked + label {
+  background-color: #fd0d35;
+  width: 120px;
+}
+
+.wrapper .header__variable-box .movie-btn {
+  border-radius: 10px 0 0 10px;
+}
+
+.wrapper .header__variable-box .episode-btn {
+  border-radius: 0 10px 10px 0;
+}
+
+.wrapper .header__subtitle {
+  color: white;
+  margin-top: 20px;
+}
+
+.movies-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 100px;
+}
+
+.movies-list .movie-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  margin: 10px;
+  width: 340px;
+  padding: 10px;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#0000008f), color-stop(#0000000e), to(rgba(44, 55, 61, 0)));
+  background: linear-gradient(0deg, #0000008f, #0000000e, rgba(44, 55, 61, 0));
+  color: white;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.movies-list .movie-card__poster-wrap {
+  height: 400px;
+}
+
+.movies-list .movie-card__poster {
+  max-width: 290px;
+  max-height: 400px;
+}
+
+.movies-list .movie-card__btn {
+  border-color: #cc0044;
+  border-radius: 10px;
+  background-color: #cc0044;
+  outline: none;
+  width: 200px;
+  margin: 0 auto;
+  color: black;
+}
+
+.movies-list .movie-card__btn:hover {
+  background-color: #fd0d35;
+  border-color: black;
+}
+
+.movies-list .movie-card:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#000000), color-stop(#000000), to(#2c373d));
+  background: linear-gradient(0deg, #000000, #000000, #2c373d);
+  -webkit-transform: scale(1.15, 1.15);
+          transform: scale(1.15, 1.15);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  margin: 0 auto;
+  margin-top: 15%;
+  position: relative;
+}
+
+.modal-content .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 36px;
+  color: #8d8d8d;
+}
+
+.modal-content .close-btn:hover, .modal-content .close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

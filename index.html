@@ -4,24 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/reset.css">
+    <!-- <link rel="stylesheet" href="css/reset.css"> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/ico.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-	    	<h1 class="header__title">Search For Any Movie</h1>
-	    	<form id="searchForm">
-                <input type="text" id="searchText" placeholder="Search Movies...">
-                <input type="submit" value="confirm">
-	    	</form>
+    <div class="wrapper container">
+        <header class="header row">
+                <h1 class="header__title col-12">Search For Any Movie</h1>
+                <form id="searchForm" class="header__form col-12">
+                    <input class="header__search" type="text" id="searchText" placeholder="Search Movies...">
+                    <input class="header__submit" type="submit" value="GO">
+                    <p class="header__subtitle">Choose one of variables if you want to sort result</p>
+                    <div class="header__variable-box">
+                        <input type="radio" name="type-sel" id="mov" value="movie">
+                        <label for="mov" class="movie-btn">movie</label>
+                        <input type="radio" name="type-sel" id="ser" value="series">
+                        <label for="ser" class="series-btn">series</label>
+                        <input type="radio" name="type-sel" id="ep" value="episode">
+                        <label for="ep" class="episode-btn">episode</label>
+                    </div>
+                </form>
+        </header>
+        <div id="movies-list" class="row movies-list">
+        </div>
+        <div id="movieInfo"></div>
     </div>
-    <div id="movies-list">
-
-    </div>
-    
     <script src="./js/practice.js"></script>
 </body>
 </html>
