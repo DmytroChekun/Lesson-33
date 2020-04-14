@@ -51,7 +51,7 @@ $('input').change(function(){
 });
 
 function films(userText) {
-    const apiUrl = `http://www.omdbapi.com/?s=${userText}&type=${selectorVal}&apikey=a506ace3`;
+    const apiUrl = `https://www.omdbapi.com/?s=${userText}&type=${selectorVal}&apikey=a506ace3`;
     
     fetch(apiUrl)
         .then((response) => {
@@ -100,7 +100,7 @@ let showMovie = function(respMov){
             <div class="offset-1 col-10">
                 ${respMov.Plot}
                 <hr>
-                <a href="http://imdb.com/title/${respMov.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                <a href="https://imdb.com/title/${respMov.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
             </div>
         </div>
         <span class="close-btn">&times;</span>
@@ -110,7 +110,7 @@ let showMovie = function(respMov){
     ;
 };
 function getMovie(id){
-    const movInfo = `http://www.omdbapi.com/?i=${id}&apikey=a506ace3`;
+    const movInfo = `https://www.omdbapi.com/?i=${id}&apikey=a506ace3`;
     fetch(movInfo)
         .then((response) => {
             return response.json();
@@ -151,7 +151,7 @@ let counter = 2;
 
 
 let loadMore = function() {
-        let apiUrl = `http://www.omdbapi.com/?s=${userText}&type=${selectorVal}&page=${counter}&apikey=a506ace3`;
+        let apiUrl = `https://www.omdbapi.com/?s=${userText}&type=${selectorVal}&page=${counter}&apikey=a506ace3`;
         fetch(apiUrl)
         .then((response) => {
             return response.json();
