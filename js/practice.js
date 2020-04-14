@@ -19,7 +19,6 @@ let convertData = function(respData) {
         pages = 0;
     };
     for (let i = 0; i < respData.Search.length; i++) {
-        console.log(respData.Search[i]);
 
         let movies = respData.Search[i];
         let movieName = movies.Title;
@@ -60,12 +59,10 @@ function films(userText) {
         })
         .then((respData) => {
             convertData(respData);
-            console.log(respData);
             $('#movies-list').html(output);
         })
         .catch(function(error) {
             console.log(error);
-            console.log("error from 54");
             swal({
                 title: "(ಠ_ಠ)",
                 text: "I can't find it. So... it doesn't exist. \n And yeah, I'm sure.",
@@ -78,7 +75,7 @@ function films(userText) {
 
 let outputFilm;
 let showMovie = function(respMov){
-    console.log(respMov.Poster);
+
     outputFilm =`
     <div class="modal">
     <div class="modal-content container">
@@ -114,13 +111,11 @@ let showMovie = function(respMov){
 };
 function getMovie(id){
     const movInfo = `http://www.omdbapi.com/?i=${id}&apikey=a506ace3`;
-    console.log(movInfo);
     fetch(movInfo)
         .then((response) => {
             return response.json();
         })
         .then((respMov) => {
-            console.log(respMov);
             showMovie(respMov);
             $('#movieInfo').html(outputFilm);
             $('.close-btn').on('click', function(){
@@ -135,7 +130,6 @@ function getMovie(id){
         })
         .catch(function(error) {
             console.log(error);
-            console.log("error from 123");
             swal({
                 title: "(ಠ_ಠ)",
                 text: "I can't find it. So... it doesn't exist. \n And yeah, I'm sure.",
@@ -158,24 +152,16 @@ let counter = 2;
 
 let loadMore = function() {
         let apiUrl = `http://www.omdbapi.com/?s=${userText}&type=${selectorVal}&page=${counter}&apikey=a506ace3`;
-        console.log(apiUrl);
         fetch(apiUrl)
         .then((response) => {
             return response.json();
         })
         .then((respData) => {
             convertDataNew(respData);
-            console.log(respData);
             $('#movies-list').html(output);
         })
         .catch(function(error) {
             console.log(error);
-            swal({
-                title: "(ಠ_ಠ)",
-                text: "I can't find it. So... it doesn't exist. \n And yeah, I'm sure.",
-                icon: "warning",
-                dangerMode: true,
-              });
         })
         let convertDataNew = function(respData) {
             for (let i = 0; i < respData.Search.length; i++) {
