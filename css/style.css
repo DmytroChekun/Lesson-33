@@ -117,8 +117,8 @@ body {
   background: -webkit-gradient(linear, left bottom, left top, from(#0000008f), color-stop(#0000000e), to(rgba(44, 55, 61, 0)));
   background: linear-gradient(0deg, #0000008f, #0000000e, rgba(44, 55, 61, 0));
   color: white;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .movies-list .movie-card__poster-wrap {
@@ -148,41 +148,118 @@ body {
 .movies-list .movie-card:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#000000), color-stop(#000000), to(#2c373d));
   background: linear-gradient(0deg, #000000, #000000, #2c373d);
-  -webkit-transform: scale(1.15, 1.15);
-          transform: scale(1.15, 1.15);
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .modal {
-  display: none;
+  display: block !important;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
   margin: 0 auto;
-  margin-top: 15%;
+  margin-top: 10%;
   position: relative;
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: -webkit-gradient(linear, left top, left bottom, from(#143d55), to(#333536)) !important;
+  background: linear-gradient(180deg, #143d55, #333536) !important;
+  color: white;
 }
 
-.modal-content .close-btn {
+.movie-info {
+  padding: 15px;
+}
+
+.close-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 36px;
-  color: #8d8d8d;
+  top: -20px;
+  right: 10px;
+  font-size: 62px;
+  color: white;
 }
 
-.modal-content .close-btn:hover, .modal-content .close-btn:focus {
+.close-btn:hover, .close-btn:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.hide {
+  display: none !important;
+}
+
+.plot-sec {
+  padding-bottom: 15px;
+}
+
+.btn-primary {
+  background-color: #cc0044 !important;
+  border-color: #cc0044 !important;
+  border-radius: 10px !important;
+  width: 200px;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #fd0d35 !important;
+  color: black !important;
+}
+
+.list-group-item {
+  background-color: transparent !important;
+  border-color: #131531 !important;
+}
+
+strong {
+  text-transform: uppercase;
+  color: #e9fffe;
+}
+
+hr {
+  background-color: #131531;
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    margin-top: 5%;
+  }
+  .movie-info__img-box {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .movie-info__img {
+    height: 270px !important;
+  }
+  .list-group-item {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-card {
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .movie-card {
+    width: 40% !important;
+    margin: 0 auto !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */

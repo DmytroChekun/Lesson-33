@@ -102,7 +102,7 @@ body {
         border-radius: 5px;
         background: linear-gradient(0deg,#0000008f,#0000000e, rgba(44, 55, 61, 0));
         color: white;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.2s ease-in-out;
         &__poster-wrap{
             height: 400px;
         }
@@ -131,37 +131,110 @@ body {
     }
     .movie-card:hover{
         background: linear-gradient(0deg,#000000,#000000, rgb(44, 55, 61));
-        transform: scale(1.15, 1.15);
-        transition: all 0.5s ease-in-out;
+        transform: scale(1.1, 1.1);
+        transition: all 0.2s ease-in-out;
     }
 }
 
 .modal{
-    display: none;
+    display: block !important;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba($color: #000000, $alpha: 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content{
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 10%;
     position: relative;
-    .close-btn{
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        font-size: 36px;
-        color: rgb(141, 141, 141);
+    // // height: 0%;
+    width: 600px;
+    display: flex;
+    background: linear-gradient(180deg,#143d55,rgb(51, 53, 54)) !important;
+    color: white;
+}
+.movie-info{
+    padding: 15px;
+}
+.movie-info__info{
+    // width: 800px;
+}
+.close-btn{
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-size: 62px;
+    color: rgb(255, 255, 255);
+}
+.close-btn:hover, .close-btn:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hide{
+    display: none !important;
+}
+
+.plot-sec{
+    padding-bottom: 15px;
+}
+
+.btn-primary{
+    background-color: rgb(204, 0, 68) !important;
+    border-color: rgb(204, 0, 68) !important;
+    border-radius: 10px !important;
+    width: 200px;
+    text-align: center;
+}
+.btn-primary:hover{
+    background-color: rgb(253, 13, 53) !important;
+    color: black !important;
+}
+.list-group-item{
+    background-color: transparent !important;
+    border-color: rgb(19, 21, 49) !important;
+}
+strong{
+    text-transform: uppercase;
+    color: rgb(233, 255, 254);
+}
+hr{
+    background-color: rgb(19, 21, 49);
+}
+
+@media (max-width: 992px){
+    .modal-content{
+        margin-top: 5%;
     }
-    .close-btn:hover, .close-btn:focus{
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
+    .movie-info__img-box{
+        margin: 0 auto;
+        text-align: center;
+    }
+    .movie-info__img{
+        height: 270px !important;
+    }
+    .list-group-item{
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+    }
+}
+
+@media (max-width: 768px){
+    .movie-card{
+        width: 85% !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .movie-card{
+        width: 40% !important;
+        margin: 0 auto !important;
     }
 }
