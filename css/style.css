@@ -98,7 +98,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 .movies-list .movie-card {
@@ -261,5 +261,43 @@ hr {
     width: 40% !important;
     margin: 0 auto !important;
   }
+}
+
+.fav-btn {
+  background-color: #969696;
+  color: white;
+  border-radius: 10px !important;
+  width: 200px;
+  margin-top: 5px !important;
+  margin: 0 auto;
+}
+
+.fav-btn:hover {
+  background-color: #fd0d35;
+  border-color: black;
+  color: black;
+}
+
+.btn-card {
+  margin-bottom: 5px;
+}
+
+.fav-list-btn {
+  border: none;
+  border-radius: 10px;
+  background-color: #cc0044;
+  outline: none;
+  width: 130px;
+  margin: 0 auto;
+  text-align: center;
+  color: black;
+  margin-top: 110px;
+  height: 41px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.fav-list-btn:hover {
+  background-color: #fd0d35;
 }
 /*# sourceMappingURL=style.css.map */

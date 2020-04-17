@@ -32,6 +32,7 @@ let convertData = function(respData) {
             <p class="movie-card__title">${movieName}</p>
             <p class="movie-card__year">Year: ${year}</p>
             <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+            <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</button>
           </div>
       `;
      };
@@ -59,6 +60,7 @@ function films(userText) {
         })
         .then((respData) => {
             convertData(respData);
+            console.log(respData);
             $('#movies-list').html(output);
         })
         .catch(function(error) {
@@ -101,6 +103,7 @@ let showMovie = function(respMov){
                 ${respMov.Plot}
                 <hr>
                 <a href="https://imdb.com/title/${respMov.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
+                
             </div>
         </div>
         <span class="close-btn">&times;</span>
@@ -179,6 +182,7 @@ let loadMore = function() {
                     <p class="movie-card__title">${movieName}</p>
                     <p class="movie-card__year">Year: ${year}</p>
                     <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+                    <a onclick="getMovie('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</a>
                   </div>
               `;
              };
@@ -188,3 +192,77 @@ let loadMore = function() {
         }
 };
 };
+
+let addToFavorites = function(imdbID){
+    localStorage.setItem(imdbID, imdbID);
+}
+let favList = [];
+
+    for (x in localStorage){
+        if(localStorage.getItem(x) != null){
+        favList.push(`${localStorage.getItem(x)}`);
+    }
+    }
+    // console.log(favList);
+    // console.log(favList);
+    let output1 = "";
+    $('.fav-list-btn').click (function(){
+        displayFavorites(favList);
+});
+
+let displayFavorites = function(favList){
+    // output1 = "";
+    for (let i = 0; i < favList.length; i++){
+            const apiUrl = `https://www.omdbapi.com/?i=${favList[i]}&type=${selectorVal}&apikey=a506ace3`;
+            fetch(apiUrl)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((respData) => {
+                    console.log(respData);
+                    let movies = respData;
+                    let movieName = movies.Title;
+                    let moviePoster = movies.Poster;
+                    let year = movies.Year;
+                    output1 += `
+                      <div class="movie-card">
+                        <div class="movie-card__poster-wrap">
+                            <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
+                        </div>
+                        <p class="movie-card__title">${movieName}</p>
+                        <p class="movie-card__year">Year: ${year}</p>
+                        <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+                        <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</button>
+                      </div>
+                  `;
+                 })
+                    // convertData(respData);
+                    // console.log(respData);
+                    // $('#movies-list').html(output);
+                
+                .catch(function(error) {
+                    console.log(error);
+                    swal({
+                        title: "(ಠ_ಠ)",
+                        text: "I can't find it. So... it doesn't exist. \n And yeah, I'm sure.",
+                        icon: "warning",
+                        dangerMode: true,
+                      });
+                })
+        
+    }
+    // output = output1;
+    userText = "";
+    $('#movies-list').html(output1);
+}
+
+// $ localStorage.each function(imdbID){
+//     (imdbID, imdbID);
+// }
+// let favoritesStorage = function(){
+//     localStorage
+// }
+
+// $( "li" ).each(function( index ) {
+//   console.log( index + ": " + $( this ).text() );
+// });
