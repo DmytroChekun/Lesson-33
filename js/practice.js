@@ -24,8 +24,19 @@ let convertData = function(respData) {
         let movieName = movies.Title;
         let moviePoster = movies.Poster;
         let year = movies.Year;
-        output += `
-          <div class="movie-card">
+        if(favList.includes(movies.imdbID)){
+            output += `
+            <div class="movie-card">
+            <div class="movie-card__poster-wrap">
+                <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
+            </div>
+            <p class="movie-card__title">${movieName}</p>
+            <p class="movie-card__year">Year: ${year}</p>
+            <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+            <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn fav-btn--act" href="#">In your favorite</button>
+            </div>`
+        }else{
+            output += `<div class="movie-card">
             <div class="movie-card__poster-wrap">
                 <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
             </div>
@@ -33,11 +44,10 @@ let convertData = function(respData) {
             <p class="movie-card__year">Year: ${year}</p>
             <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
             <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</button>
-          </div>
-      `;
-     };
-     
-}
+            </div>`
+        };
+      
+     }};
 let selectorVal;
 $('input').change(function(){
     if ($("#mov").is(':checked')==true){
@@ -196,6 +206,9 @@ let loadMore = function() {
 let addToFavorites = function(imdbID){
     localStorage.setItem(imdbID, imdbID);
 }
+let removeFavorites = function(imdbID){
+    localStorage.removeItem(imdbID);
+}
 let favList = [];
 
     for (x in localStorage){
@@ -203,15 +216,13 @@ let favList = [];
         favList.push(`${localStorage.getItem(x)}`);
     }
     }
-    // console.log(favList);
-    // console.log(favList);
     let output1 = "";
     $('.fav-list-btn').click (function(){
         displayFavorites(favList);
 });
 
 let displayFavorites = function(favList){
-    // output1 = "";
+
     for (let i = 0; i < favList.length; i++){
             const apiUrl = `https://www.omdbapi.com/?i=${favList[i]}&type=${selectorVal}&apikey=a506ace3`;
             fetch(apiUrl)
@@ -219,7 +230,6 @@ let displayFavorites = function(favList){
                     return response.json();
                 })
                 .then((respData) => {
-                    console.log(respData);
                     let movies = respData;
                     let movieName = movies.Title;
                     let moviePoster = movies.Poster;
@@ -232,7 +242,7 @@ let displayFavorites = function(favList){
                         <p class="movie-card__title">${movieName}</p>
                         <p class="movie-card__year">Year: ${year}</p>
                         <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
-                        <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</button>
+                        <button onclick="removeFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Remove favorite</button>
                       </div>
                   `;
                  })
@@ -251,8 +261,9 @@ let displayFavorites = function(favList){
                 })
         
     }
-    // output = output1;
+  
     userText = "";
+    
     $('#movies-list').html(output1);
 }
 
@@ -266,3 +277,41 @@ let displayFavorites = function(favList){
 // $( "li" ).each(function( index ) {
 //   console.log( index + ": " + $( this ).text() );
 // });
+
+
+
+
+
+
+
+
+
+// for (let i = 0; i < respData.Search.length; i++) {
+
+//     let movies = respData.Search[i];
+//     let movieName = movies.Title;
+//     let moviePoster = movies.Poster;
+//     let year = movies.Year;
+//     if(favList.some(movies.imdbID)){
+//         output += `
+//         <div class="movie-card">
+//         <div class="movie-card__poster-wrap">
+//             <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
+//         </div>
+//         <p class="movie-card__title">${movieName}</p>
+//         <p class="movie-card__year">Year: ${year}</p>
+//         <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+//         <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">In your favorite</button>
+//         </div>`
+//     }else{
+//         output += `<div class="movie-card">
+//         <div class="movie-card__poster-wrap">
+//             <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
+//         </div>
+//         <p class="movie-card__title">${movieName}</p>
+//         <p class="movie-card__year">Year: ${year}</p>
+//         <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+//         <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Add favorite</button>
+//         </div>`
+//     };
+  

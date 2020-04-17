@@ -300,4 +300,8 @@ hr {
 .fav-list-btn:hover {
   background-color: #fd0d35;
 }
+
+.fav-btn--act {
+  background: #ebb042 !important;
+}
 /*# sourceMappingURL=style.css.map */
