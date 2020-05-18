@@ -339,9 +339,8 @@ hr {
     margin: 0 auto !important;
     font-size: 12px;
   }
-}
-
-h2 {
-  text-shadow: -1px 0px 16px #000000 !important;
+  .modal-content {
+    min-height: 450px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
