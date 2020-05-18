@@ -75,7 +75,7 @@ body {
                 border-radius: 10px 0 0 10px;
             }
             .series-btn{
-
+                
             }
             .episode-btn{
                 border-radius: 0 10px 10px 0;
@@ -104,9 +104,12 @@ body {
         color: white;
         transition: all 0.2s ease-in-out;
         &__poster-wrap{
+            margin: 0 auto;
+            width: 80%;
             height: 400px;
         }
         &__poster{
+            width: 100%;
             max-width: 290px;
             max-height: 400px;
         }
@@ -158,6 +161,7 @@ body {
     display: flex;
     background: linear-gradient(180deg,#143d55,rgb(51, 53, 54)) !important;
     color: white;
+    overflow-y: auto;
 }
 .movie-info{
     padding: 15px;
@@ -279,4 +283,39 @@ hr{
 
 .fav-btn--act{
     background: rgb(235, 176, 66) !important;
+}
+
+@media (max-width: 424px){
+    .header__search{
+        width: 75% !important;
+    }
+    .header__submit{
+        width: 17% !important;
+    }
+    .header__title{
+        font-size: 24px !important;
+    }
+    .movie-info__img-box{
+        margin-bottom: -450px;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0.5;
+    }
+    .movie-info__img{
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .list-group{
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+        text-shadow: -1px 0px 16px #000000 !important;
+    }
+    .offset-1{
+        margin: 0 auto !important;
+        font-size: 12px;
+    }
+
+}    h2{
+    text-shadow: -1px 0px 16px #000000 !important;
 }

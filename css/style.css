@@ -122,10 +122,13 @@ body {
 }
 
 .movies-list .movie-card__poster-wrap {
+  margin: 0 auto;
+  width: 80%;
   height: 400px;
 }
 
 .movies-list .movie-card__poster {
+  width: 100%;
   max-width: 290px;
   max-height: 400px;
 }
@@ -177,6 +180,7 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(#143d55), to(#333536)) !important;
   background: linear-gradient(180deg, #143d55, #333536) !important;
   color: white;
+  overflow-y: auto;
 }
 
 .movie-info {
@@ -303,5 +307,41 @@ hr {
 
 .fav-btn--act {
   background: #ebb042 !important;
+}
+
+@media (max-width: 424px) {
+  .header__search {
+    width: 75% !important;
+  }
+  .header__submit {
+    width: 17% !important;
+  }
+  .header__title {
+    font-size: 24px !important;
+  }
+  .movie-info__img-box {
+    margin-bottom: -450px;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.5;
+  }
+  .movie-info__img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .list-group {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    text-shadow: -1px 0px 16px #000000 !important;
+  }
+  .offset-1 {
+    margin: 0 auto !important;
+    font-size: 12px;
+  }
+}
+
+h2 {
+  text-shadow: -1px 0px 16px #000000 !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -36,7 +36,8 @@ let convertData = function(respData) {
             <button onclick="addToFavorites('${movies.imdbID}')" class="btn fav-btn fav-btn--act" href="#">In your favorite</button>
             </div>`
         }else{
-            output += `<div class="movie-card">
+            output += `
+            <div class="movie-card">
             <div class="movie-card__poster-wrap">
                 <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
             </div>
@@ -210,16 +211,20 @@ let removeFavorites = function(imdbID){
     localStorage.removeItem(imdbID);
 }
 let favList = [];
-
+let favoritePreLoad = function(){
     for (x in localStorage){
-        if(localStorage.getItem(x) != null){
+        if(localStorage.getItem(x) != null&&localStorage.getItem(x).length == 9){
         favList.push(`${localStorage.getItem(x)}`);
     }
     }
-    let output1 = "";
-    $('.fav-list-btn').click (function(){
-        displayFavorites(favList);
+}
+let output1 = "";
+$('.fav-list-btn').click (function(){
+    output1 = "";
+    displayFavorites(favList);
 });
+
+favoritePreLoad();
 
 let displayFavorites = function(favList){
 
@@ -230,21 +235,7 @@ let displayFavorites = function(favList){
                     return response.json();
                 })
                 .then((respData) => {
-                    let movies = respData;
-                    let movieName = movies.Title;
-                    let moviePoster = movies.Poster;
-                    let year = movies.Year;
-                    output1 += `
-                      <div class="movie-card">
-                        <div class="movie-card__poster-wrap">
-                            <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
-                        </div>
-                        <p class="movie-card__title">${movieName}</p>
-                        <p class="movie-card__year">Year: ${year}</p>
-                        <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
-                        <button onclick="removeFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Remove favorite</button>
-                      </div>
-                  `;
+                    displayFavFunc(respData);
                  })
                     // convertData(respData);
                     // console.log(respData);
@@ -261,8 +252,26 @@ let displayFavorites = function(favList){
                 })
         
     }
-  
+    let displayFavFunc = function(respData) {
+        let movies = respData;
+        let movieName = movies.Title;
+        let moviePoster = movies.Poster;
+        let year = movies.Year;
+        output1 += `
+          <div class="movie-card">
+            <div class="movie-card__poster-wrap">
+                <img class="movie-card__poster" src="${moviePoster}" alt="image is not available">
+            </div>
+            <p class="movie-card__title">${movieName}</p>
+            <p class="movie-card__year">Year: ${year}</p>
+            <a onclick="getMovie('${movies.imdbID}')" class="movie-card__btn btn" href="#">Movie Details</a>
+            <button onclick="removeFavorites('${movies.imdbID}')" class="btn fav-btn" href="#">Remove favorite</button>
+          </div>
+      `;
+      $('#movies-list').html("");
+      $('#movies-list').html(output1);
+    }
     userText = "";
     
-    $('#movies-list').html(output1);
+    
 }
